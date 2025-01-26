@@ -6,10 +6,10 @@ import time
 
 def main():
     st.title("News Detection")
-    with open('random_forest_model.pkl', 'rb') as model_file:
+    with open('random_forestmodel.pkl', 'rb') as model_file:
         model = pickle.load(model_file)
 
-    with open('tfidf_vectorizer.pkl', 'rb') as vectorizer_file:
+    with open('tfidfvectorizer.pkl', 'rb') as vectorizer_file:
         vectorizer = pickle.load(vectorizer_file)
 
     # User input
