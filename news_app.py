@@ -5,7 +5,7 @@ import pickle
 import time
 
 def main():
-    st.title("News Detection")
+    st.title("News Detection(Real/Fake)")
     with open('random_forestmodel.pkl', 'rb') as model_file:
         model = pickle.load(model_file)
 
@@ -13,10 +13,10 @@ def main():
         vectorizer = pickle.load(vectorizer_file)
 
     # User input
-    user_input = st.text_area("Enter news text to analyze:")
+    user_input = st.text_area("Enter news text to check:")
 
-    if st.button("Analyze"):
-        progress_text = "Operation in progress. Please wait."
+    if st.button("Analyze this"):
+        progress_text = "Checking the authencity of news... Please wait."
         my_bar = st.progress(0, text=progress_text)
         for percent_complete in range(100):
                 my_bar.progress(percent_complete + 1, text=progress_text)
@@ -34,7 +34,7 @@ def main():
         else:
             st.error("This news is Fake.")
     else:
-        st.warning("Please enter some text.")
+        st.warning("Please enter  text.")
     st.markdown(
         """
         <style>
