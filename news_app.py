@@ -85,7 +85,7 @@ st.markdown(
     """
     <div style='text-align: center; padding: 15px; background-color: #111111; border-radius: 10px;'>
         <p style='color: #cccccc; font-size: 15px;'>
-            <b>Developed by:</b> Mrunali & Tejashree <br>n 
+            <b>Developed by:</b> Mrunali & Tejashree <br>
             Department of Computer Science, Modern College, Pune
         </p>
         <p style='color: #888888; font-size: 14px; margin-top: -10px;'>
