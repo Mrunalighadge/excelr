@@ -6,7 +6,6 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import plotly.express as px
 
 st.set_page_config(page_title="News Detection (Real/Fake)", layout="centered")
 
@@ -157,12 +156,6 @@ if analyze:
                 spine.set_visible(False)
             st.pyplot(fig2)
 
-            # Pie chart (interactive)
-            try:
-                fig_pie = px.pie(prob_df, names="label", values="prob", title="Probability Breakdown", hole=0.4)
-                st.plotly_chart(fig_pie, use_container_width=True)
-            except Exception:
-                pass
 
         # Download result
         result_text = f"Input:\n{user_input}\n\nPrediction: {label_text}\nConfidence: {confidence}\n\nProbabilities: {probs}"
