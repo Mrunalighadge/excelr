@@ -62,16 +62,14 @@ with col1:
 with col2:
     st.write("")  # spacing
     st.write("")
-    if st.button("Try Example"):
-        example = ("Breaking: Central government announces a new policy expected to boost employment by 5% next year. "
-                   "Experts welcome the policy and say this will improve investor confidence.")
-        # set session state so text_area updates
-        st.session_state['user_input_example'] = example
-        st.experimental_rerun()
+   if st.button("Try Example"):
+    st.session_state['user_input_example'] = (
+        "Breaking: Central government announces a new policy expected to boost employment by 5% next year. "
+        "Experts welcome the policy and say this will improve investor confidence."
+    )
 
-# If example was set, put it into user_input (works after rerun)
 if 'user_input_example' in st.session_state:
-    user_input = st.session_state.pop('user_input_example', user_input)
+    user_input = st.session_state['user_input_example']
 
 analyze = st.button("Analyze this")
 
