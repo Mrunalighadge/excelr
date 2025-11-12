@@ -13,48 +13,6 @@ def main():
 
     # User input
     user_input = st.text_area("Enter news text to check:")
-# --- Example & Clear Output Buttons Section ---
-import streamlit as st
-
-# Helper function to clear input/output
-def clear_output():
-    """Clears stored user input and results from Streamlit session state."""
-    if 'user_input' in st.session_state:
-        st.session_state['user_input'] = ''
-    if 'result' in st.session_state:
-        del st.session_state['result']
-    if 'confidence' in st.session_state:
-        del st.session_state['confidence']
-    if 'probs' in st.session_state:
-        del st.session_state['probs']
-    if 'clear_clicked' in st.session_state:
-        del st.session_state['clear_clicked']
-
-# Layout for the buttons
-colA, colB = st.columns(2)
-
-with colA:
-    if st.button("✨ Try Example"):
-        st.session_state['user_input'] = (
-            "Breaking: Central government announces a new policy expected to boost employment by 5% next year. "
-            "Experts welcome the policy and say this will improve investor confidence."
-        )
-        st.info("✅ Example news inserted — click 'Analyze this' to check!")
-        # for newer Streamlit
-        try:
-            st.experimental_rerun()
-        except Exception:
-            pass
-
-with colB:
-    if st.button("🧹 Clear Output"):
-        clear_output()
-        st.info("🧾 Output cleared. You can enter new text now!")
-        # Version-safe rerun
-        try:
-            st.experimental_rerun()
-        except Exception:
-            st.session_state['clear_clicked'] = True
 
     
     if st.button("Analyze this"):
