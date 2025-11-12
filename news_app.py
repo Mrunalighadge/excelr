@@ -46,3 +46,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+. Footer Section with Credits
+
+At the bottom, include a small footer:
+
+Developed by: Mrunali & Tejashree | Department of Computer Science | Modern College, Pune
+Powered by Machine Learning and NLP (Python, Scikit-learn, TF-IDF)
