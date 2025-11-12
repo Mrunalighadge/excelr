@@ -47,9 +47,20 @@ def main():
 if __name__ == "__main__":
     main()
 
-. Footer Section with Credits
+# ------------------ FOOTER SECTION ------------------
 
-At the bottom, include a small footer:
-
-Developed by: Mrunali & Tejashree | Department of Computer Science | Modern College, Pune
-Powered by Machine Learning and NLP (Python, Scikit-learn, TF-IDF)
+st.markdown("""---""")
+st.markdown(
+    """
+    <div style='text-align: center; padding: 15px; background-color: #111111; border-radius: 10px;'>
+        <p style='color: #cccccc; font-size: 15px;'>
+            <b>Developed by:</b> Mrunali & Tejashree <br>
+            Department of Computer Science, Modern College, Pune
+        </p>
+        <p style='color: #888888; font-size: 14px; margin-top: -10px;'>
+            <i>Powered by Machine Learning and NLP (Python · Scikit-learn · TF-IDF)</i>
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
