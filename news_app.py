@@ -43,6 +43,32 @@ def main():
         }
         </style>""",
         unsafe_allow_html=True,)        
+# ✅ Visualization Section (paste here)
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+import plotly.express as px
+
+if isinstance(probs, dict):
+    prob_df = pd.DataFrame(list(probs.items()), columns=["label", "prob"])
+else:
+    prob_df = pd.DataFrame({"label": ["Fake", "Real"], "prob": [0.3, 0.7]})
+
+st.write("### Prediction Probability")
+
+fig, ax = plt.subplots(figsize=(6,1.8))
+bars = ax.barh(prob_df["label"], prob_df["prob"],
+               color=["#ff4b4b" if l.lower()=="fake" else "#2ecc71" for l in prob_df["label"]])
+ax.set_xlim(0,1)
+ax.set_xlabel("Probability")
+for i, v in enumerate(prob_df["prob"]):
+    ax.text(v + 0.02, i, f"{v*100:.1f}%", va="center")
+st.pyplot(fig)
+
+# Optional interactive pie
+fig_pie = px.pie(prob_df, values='prob', names='label', title='Probability Breakdown', hole=0.4)
+st.plotly_chart(fig_pie, use_container_width=True)
 
 if __name__ == "__main__":
     main()
