@@ -77,6 +77,44 @@ def plot_probability_bar(probs):
         # don't break the app
         st.write(f"Probability plot skipped ({e})")
 
+import numpy as np
+import seaborn as sns
+
+def plot_top_features(model, vectorizer, top_n=12):
+    """
+    Plots top_n features from model.feature_importances_ mapped to vectorizer feature names.
+    Works for RandomForest-like models and TF-IDF vectorizers.
+    """
+    try:
+        if not hasattr(model, "feature_importances_"):
+            st.info("Feature importance not available for this model.")
+            return
+        # get feature names
+        if hasattr(vectorizer, "get_feature_names_out"):
+            feat_names = vectorizer.get_feature_names_out()
+        elif hasattr(vectorizer, "get_feature_names"):
+            feat_names = vectorizer.get_feature_names()
+        else:
+            st.info("Vectorizer does not expose feature names.")
+            return
+
+        importances = model.feature_importances_
+        if len(importances) != len(feat_names):
+            st.info("Feature length mismatch. Skipping feature importance plot.")
+            return
+
+        idxs = np.argsort(importances)[-top_n:][::-1]
+        top_feats = [feat_names[i] for i in idxs]
+        top_vals = importances[idxs]
+
+        fig, ax = plt.subplots(figsize=(6, 3))
+        sns.barplot(x=top_vals, y=top_feats, ax=ax)
+        ax.set_xlabel("Importance")
+        ax.set_ylabel("")
+        ax.set_title(f"Top {top_n} features (approx.)")
+        st.pyplot(fig)
+    except Exception as e:
+        st.write(f"Feature importance skipped ({e})")
 
 # ------------------ FOOTER SECTION ------------------
 
