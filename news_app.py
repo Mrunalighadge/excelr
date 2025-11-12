@@ -65,7 +65,7 @@ with colB:
                 time.sleep(0.1)
                 my_bar.empty()
         
-    if user_input.strip():
+    if user_input and user_input.strip():
     # Transform user input
         input_vectorized = vectorizer.transform([user_input])
         # Predict
